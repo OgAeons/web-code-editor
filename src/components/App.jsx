@@ -1,26 +1,32 @@
-import React from "react"
-import 'codemirror/lib/codemirror.css'
-import 'codemirror/theme/material.css'
-import 'codemirror/mode/xml/xml'
-import 'codemirror/mode/css/css'
-import 'codemirror/mode/javascript/javascript'
-import Controlled from 'react-codemirror2'
+import React, {useState} from "react"
+import Editor from "./Editor"
 
 function App() {
+    const [html, setHtml] = useState("")
+    const [css, setCss] = useState("")
+    const [javascript, setJavascript] = useState("")
+
     return (
         <div>
             <div className="editor-section">
-                <div className="editor">
-                    <div className="editor-title-bar">
-                        <h3>HTML</h3>
-                        <button className="expand">EXPAND</button>
-                    </div>
-                    <div className="code" 
-                        style={{lineWrapping: true, 
-                        lint: true,
-                        lineNumbers: true
-                    }}></div>
-                </div>
+                <Editor 
+                    title="HTML"
+                    language="xml"
+                    value={html}
+                    onChange={setHtml}
+                />
+                <Editor 
+                    title="CSS"
+                    language="css"
+                    value={css}
+                    onChange={setCss}
+                />
+                <Editor 
+                    title="JS"
+                    language="javascript"
+                    value={javascript}
+                    onChange={setJavascript}
+                />
             </div>
             <div className="display">
                 <iframe 

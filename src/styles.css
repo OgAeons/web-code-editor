@@ -1,4 +1,4 @@
-body {
+/* body {
     background-color: green;
 }
 
@@ -8,13 +8,13 @@ body {
     display: flex;
 }
 
-.editor {
+.editor-container {
     width: 70vh;
     border: 1px solid black;
 }
 
-.editor-title-bar {
+.editor-navbar {
     background-color: bisque;
     display: flex;
     justify-content: space-between;
-}
+} */
