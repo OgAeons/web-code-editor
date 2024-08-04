@@ -10,7 +10,17 @@ function App() {
     return (
         <div>
             <div className="editor-section">
-                <div className="editor"></div>
+                <div className="editor">
+                    <div className="editor-title-bar">
+                        <h3>HTML</h3>
+                        <button className="expand">EXPAND</button>
+                    </div>
+                    <div className="code" 
+                        style={{lineWrapping: true, 
+                        lint: true,
+                        lineNumbers: true
+                    }}></div>
+                </div>
             </div>
             <div className="display">
                 <iframe 
