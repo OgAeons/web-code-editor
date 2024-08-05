@@ -24,6 +24,10 @@ body {
     align-items: center;
 }
 
+.CodeMirror {
+    height: 100% !important; 
+}
+
 .display {
     background-color: rgb(31, 31, 31);
     height: 49vh;
