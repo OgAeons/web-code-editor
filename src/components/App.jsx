@@ -32,7 +32,7 @@ function App() {
                 <iframe 
                     title="output"
                     sandbox="allow-scripts"
-                    style={{border: 0, height: "100%", width: "100%"}}
+                    style={{border: 0, height: "92%", width: "98%"}}
                 ></iframe>
             </div>
         </div>

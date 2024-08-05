@@ -1,20 +1,35 @@
-/* body {
-    background-color: green;
+body {
+    background-color: rgb(11, 11, 11);
 }
 
 .editor-section {
-    background-color: blue;
-    height: 50vh;
+    background-color: rgb(31, 31, 31);
+    height: 48vh;
     display: flex;
 }
 
 .editor-container {
-    width: 70vh;
-    border: 1px solid black;
+    color: white;
+    width: 65vh;
+    margin: 0.5rem 15px;
+    border: 1px solid #636363;
 }
 
 .editor-navbar {
-    background-color: bisque;
+    background-color: rgb(0, 0, 0);
+    height: 5vh;
+    padding: 0 1rem;
     display: flex;
     justify-content: space-between;
-} */
+    align-items: center;
+}
+
+.display {
+    background-color: rgb(31, 31, 31);
+    height: 49vh;
+}
+
+iframe {
+    background-color: white;
+    margin: 0.9rem;
+}
