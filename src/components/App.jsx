@@ -31,10 +31,41 @@ function App() {
         setAutoCompile(prev => !prev);
     }
 
+    function downloadCode() {
+        const downloadFile = (content, fileName, fileType) => {
+            const blob = new Blob([content], { type: fileType })
+            const url = URL.createObjectURL(blob)
+            const file = document.createElement("a")
+            file.href = url
+            file.download = fileName
+            file.click()
+            URL.revokeObjectURL(url)
+        }   
+
+        const htmlContent = `
+            <!DOCTYPE html>
+                <html>
+                    <head>
+                        <title>Web Code</title>
+                        <link rel="stylesheet" href="./styles-WebCodeEditor.css">
+                    </head>
+                    <body>
+                        ${html}
+                    </body>
+                    <script type="module" src="./index-WebCodeEditor.js"></script>
+                </html>
+        `
+        downloadFile(htmlContent, "index-WebCodeEditor.html", "text/html")
+        downloadFile(css, "styles-WebCodeEditor.css", "text/css")
+        downloadFile(javascript, "index-WebCodeEditor.js", "application/javascript")
+    }
+
     return (
         <div>
             <div className="navbar">
                 <h2>Web Code Editor</h2>
+                <button onClick={downloadCode}>Download Code</button>
+                <p> | </p>
                 <p>Auto Compile</p> 
                 <label class="switch">
                     <input type="checkbox" checked={autoCompile} onChange={toggleAutoCompile}/>
