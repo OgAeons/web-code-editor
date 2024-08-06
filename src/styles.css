@@ -10,9 +10,20 @@ body {
 
 .editor-container {
     color: white;
-    width: 65vh;
+    /* width: 65vh; */
+    flex-grow: 1;
+    flex-basis: 0;
     margin: 0.5rem 15px;
     border: 1px solid #636363;
+}
+
+.editor-container.minimize {
+  flex-grow: 0;
+}
+
+.editor-container.minimize .CodeMirror-scroll {
+  position: absolute;
+  overflow: hidden !important;
 }
 
 .editor-navbar {
@@ -26,6 +37,11 @@ body {
 
 .CodeMirror {
     height: 100% !important; 
+}
+
+.editor {
+  height: 89% !important;
+  overflow: hidden !important;
 }
 
 .display {
@@ -118,4 +134,10 @@ iframe {
   
   .slider.round:before {
     border-radius: 50%;
+  }
+
+  button {
+    padding: 5px 5px 2px 5px;
+    filter: invert(1);
+    border: none;
   }
