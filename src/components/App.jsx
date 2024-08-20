@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react"
 import Editor from "./Editor"
+import JSZip from "jszip"
+import { saveAs } from "file-saver"
 
 function App() {
     const [html, setHtml] = useState("")
@@ -32,15 +34,7 @@ function App() {
     }
 
     function downloadCode() {
-        const downloadFile = (content, fileName, fileType) => {
-            const blob = new Blob([content], { type: fileType })
-            const url = URL.createObjectURL(blob)
-            const file = document.createElement("a")
-            file.href = url
-            file.download = fileName
-            file.click()
-            URL.revokeObjectURL(url)
-        }   
+        const zip = new JSZip()
 
         const htmlContent = `
             <!DOCTYPE html>
@@ -55,16 +49,20 @@ function App() {
                     <script type="module" src="./index-WebCodeEditor.js"></script>
                 </html>
         `
-        downloadFile(htmlContent, "index-WebCodeEditor.html", "text/html")
-        downloadFile(css, "styles-WebCodeEditor.css", "text/css")
-        downloadFile(javascript, "index-WebCodeEditor.js", "application/javascript")
+        zip.file("index.html", htmlContent)
+        zip.file("styles.css", css)
+        zip.file("index.js", javascript)
+
+        zip.generateAsync({ type: "blob" }).then(content => {
+            saveAs(content, "web-code-editor.zip")
+        })
     }
 
     return (
         <div>
             <div className="navbar">
                 <h2>Web Code Editor</h2>
-                <button onClick={downloadCode}>Download Code</button>
+                <button onClick={downloadCode}>Download Code as Zip</button>
                 <p> | </p>
                 <p>Auto Compile</p> 
                 <label class="switch">
